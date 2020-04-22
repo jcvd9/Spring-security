@@ -1,0 +1,2 @@
+spring.security.user.username="kindson"
+spring.security.user.password="root"

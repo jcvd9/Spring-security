@@ -1,0 +1,34 @@
+package com.jmc.springsecurity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+
+import com.mysql.cj.protocol.AuthenticationProvider;
+
+
+@EnableWebSecurity
+@Configuration
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+
+	private UserDetailsService userDetailsService;
+
+	@Bean
+	public AuthenticationProvider oauthProvider() {
+		
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+
+		provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+		
+		return provider;
+	}	
+	
+
+}

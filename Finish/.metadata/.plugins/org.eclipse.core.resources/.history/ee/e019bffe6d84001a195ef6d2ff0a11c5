@@ -1,0 +1,5 @@
+package com.jmc.springsecurity.repository;
+
+public interface UserRepository {
+
+}
